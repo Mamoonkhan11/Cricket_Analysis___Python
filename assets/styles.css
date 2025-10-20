@@ -1,0 +1,74 @@
+/* Dashboard design */
+
+/* Body & Background */
+[data-testid="stAppViewContainer"] {
+    background-image: url('F:\Cricket Analytics\assets\133049.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: #ffffff;
+}
+
+/* Sidebar */
+[data-testid="stSidebar"] {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+}
+
+[data-testid="stSidebar"] .css-1d391kg {
+    color: #ffffff; /* Sidebar text */
+}
+
+/* Headers */
+h1, h2, h3, h4 {
+    color: #ffdd00;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Buttons */
+.stButton>button {
+    background-color: #ff9900;
+    color: #fff;
+    border-radius: 12px;
+    padding: 8px 20px;
+    font-weight: bold;
+    border: none;
+    transition: 0.3s;
+}
+
+.stButton>button:hover {
+    background-color: #ffcc33;
+    color: #000;
+    cursor: pointer;
+}
+
+/* Inputs & Widgets */
+.stTextInput>div>input, .stSelectbox>div>div>div>div {
+    border-radius: 10px;
+    border: 1px solid #ffdd00;
+    padding: 5px 10px;
+}
+
+/* --- Tables --- */
+[data-testid="stDataFrameContainer"] table {
+    border-collapse: collapse;
+    width: 100%;
+    color: #fff;
+}
+
+[data-testid="stDataFrameContainer"] th, td {
+    border: 1px solid #ffdd00;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Links */
+a {
+    color: #ffcc33;
+    text-decoration: none;
+}
+/* On Mouse Hover */
+a:hover {
+    text-decoration: underline;
+}

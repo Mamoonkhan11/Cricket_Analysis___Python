@@ -1,0 +1,31 @@
+# --- Web app ---
+streamlit
+# --- Data manipulation ---
+pandas
+numpy
+
+# --- Machine Learning ---
+scikit-learn
+joblib
+
+# --- Visualization ---
+plotly
+matplotlib
+seaborn
+
+# --- PDF export ---
+fpdf
+
+# --- Excel export ---
+openpyxl
+xlsxwriter
+
+# --- Fuzzy string matching (optional) ---
+rapidfuzz
+
+# --- Text analysis (optional) ---
+textblob
+
+# --- Utilities ---
+python-dateutil
+pytz
