@@ -9,10 +9,9 @@ import pickle
 import os
 
 # Load dataset
-matches = pd.read_csv("data/matches.csv")  # make sure path is correct
-
+matches = pd.read_csv("data/Match.csv")  # make sure path is correct
 # Features and target
-features = ['team1', 'team2', 'toss_winner', 'venue']
+features = ['Team_Name_Id', 'Opponent_Team_Id', 'Toss_Winner_Id', 'Venue_Name']
 target = 'winner'
 
 # Drop missing values
@@ -39,7 +38,7 @@ model.fit(X_train, y_train)
 # Evaluate
 y_pred = model.predict(X_test)
 acc = accuracy_score(y_test, y_pred)
-print(f"Model trained with accuracy: {acc*100:.2f}%")
+print(f"\n Model trained with accuracy: {acc*100:.2f}% \n")
 
 # Save model and encoders
 os.makedirs("models", exist_ok=True)
@@ -49,4 +48,4 @@ with open("models/match_predictor.pkl", "wb") as f:
 with open("models/encoders.pkl", "wb") as f:
     pickle.dump(encoders, f)
 
-print("✅ Model and encoders saved to models/")
+print("\n Model and encoders saved to models \n")

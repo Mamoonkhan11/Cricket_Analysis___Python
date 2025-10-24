@@ -1,5 +1,4 @@
-# ML Based Match Prediction
-
+# ML Based Match Prediction - Updated
 import streamlit as st
 import pandas as pd
 import pickle
@@ -9,7 +8,7 @@ def run():
     st.title("🔮 Match Predictor")
 
     # Load teams from CSV if exists, otherwise fallback to hardcoded
-    teams_file = "data/teams.csv"
+    teams_file = "data/Team.csv"
     if os.path.exists(teams_file):
         teams_df = pd.read_csv(teams_file)
         teams_df.columns = teams_df.columns.str.strip()
@@ -33,12 +32,6 @@ def run():
 
     team_shortcodes = team_data["Team_Short_Code"].tolist()
 
-    # Streamlit inputs
-    team1 = st.selectbox("Team 1", team_shortcodes)
-    team2 = st.selectbox("Team 2", [t for t in team_shortcodes if t != team1])
-    toss_winner = st.selectbox("Toss Winner", [team1, team2])
-    venue = st.text_input("Venue", "Mumbai")
-
     # Load model and encoders safely
     model_path = "models/match_predictor.pkl"
     encoders_path = "models/encoders.pkl"
@@ -57,15 +50,32 @@ def run():
     with open(encoders_path, "rb") as f:
         encoders = pickle.load(f)
 
+    # Get venues from encoder to prevent unseen labels
+    if 'Venue_Name' in encoders:
+        venues = encoders['Venue_Name'].classes_.tolist()
+    else:
+        venues = ["Mumbai", "Delhi", "Chennai", "Kolkata"]  # fallback list
+
+    # Streamlit inputs
+    team1_code = st.selectbox("Team 1", team_shortcodes)
+    team2_code = st.selectbox("Team 2", [t for t in team_shortcodes if t != team1_code])
+    toss_winner_code = st.selectbox("Toss Winner", [team1_code, team2_code])
+    venue_name = st.selectbox("Venue", venues)  # dropdown from encoder
+
+    # Map shortcodes to Team_Id for model input
+    team1_id = int(team_data.loc[team_data["Team_Short_Code"] == team1_code, "Team_Id"].values[0])
+    team2_id = int(team_data.loc[team_data["Team_Short_Code"] == team2_code, "Team_Id"].values[0])
+    toss_winner_id = int(team_data.loc[team_data["Team_Short_Code"] == toss_winner_code, "Team_Id"].values[0])
+
     # Predict
     if st.button("Predict Winner"):
         try:
-            # Create input dataframe
+            # Create input dataframe with correct feature names
             input_df = pd.DataFrame({
-                "team1": [team1],
-                "team2": [team2],
-                "toss_winner": [toss_winner],
-                "venue": [venue]
+                "Team_Name_Id": [team1_id],
+                "Opponent_Team_Id": [team2_id],
+                "Toss_Winner_Id": [toss_winner_id],
+                "Venue_Name": [venue_name]
             })
 
             # Encode input using saved encoders
