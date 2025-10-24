@@ -6,7 +6,6 @@ import pages.Team_Insights as team
 import pages.Match_Predictor as predictor
 import pages.Report_Exporter as report
 
-# Page config
 st.set_page_config(
     page_title="Cricket Analytics Dashboard",
     page_icon="🏏",
@@ -14,7 +13,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Custom CSS for modern look
+# Custom CSS for styling
 st.markdown("""
 <style>
 /* Hide default menu and footer */
@@ -51,16 +50,14 @@ header {visibility: hidden;}
 </style>
 """, unsafe_allow_html=True)
 
-# Dashboard Title
 st.markdown("""
 <div style="text-align:center; font-size:36px; font-weight:bold; color:#3B82F6; margin-bottom:20px;">
     🔮 Cricket Analytics Dashboard
 </div>
 """, unsafe_allow_html=True)
 
-# Top horizontal menu
 selected = option_menu(
-    menu_title=None,  # hides default title
+    menu_title=None,  
     options=["Overview", "Player Insights", "Team Insights", "Match Predictor", "Report Exporter"],
     icons=["house", "person-lines-fill", "people-fill", "magic", "file-earmark-spreadsheet"],
     menu_icon="cast",
@@ -72,7 +69,6 @@ selected = option_menu(
     }
 )
 
-# Page routing
 if selected == "Overview":
     overview.run()
 elif selected == "Player Insights":
@@ -84,7 +80,6 @@ elif selected == "Match Predictor":
 elif selected == "Report Exporter":
     report.run()
 
-# Footer
 st.markdown("""
 <div style='text-align:center; padding:10px; color:gray; font-size:12px; margin-top:20px;'>
     © 2025 Cricket Analytics Dashboard | Designed with ❤️
