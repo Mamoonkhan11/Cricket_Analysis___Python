@@ -49,7 +49,7 @@ A **modern interactive dashboard** for cricket analytics and match prediction, b
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/cricket-analytics-dashboard.git
+git clone https://github.com/Mamoonkhan11/Cricket_Analysis___Python
 cd cricket-analytics-dashboard
 ```
 
@@ -103,16 +103,15 @@ streamlit run main.py
 Cricket-Analytics-Dashboard/
 │
 ├─ assets/
-│   ├─ styles.css          # Custom CSS for dashboard styling
-│   └─ screenshots/        # Example screenshots for README
+│   ├─ styles.css       
 │
 ├─ data/
-│   ├─ matches.csv         # Match dataset
-│   ├─ Team.csv            # Team information
+│   ├─ matches.csv        
+│   ├─ Team.csv       
 │
 ├─ models/
-│   ├─ match_predictor.pkl # Saved ML model
-│   └─ encoders.pkl        # Saved LabelEncoders
+│   ├─ match_predictor.pkl 
+│   └─ encoders.pkl       
 │
 ├─ pages/
 │   ├─ Overview.py
@@ -121,9 +120,9 @@ Cricket-Analytics-Dashboard/
 │   ├─ Match_Predictor.py
 │   └─ Report_Exporter.py
 │
-├─ main.py                 # Main Streamlit app
-├─ requirements.txt        # Python dependencies
-└─ README.md               # Project documentation
+├─ main.py              
+├─ requirements.txt    
+└─ README.md             
 ```
 
 ---
@@ -149,11 +148,5 @@ Cricket-Analytics-Dashboard/
 3. Commit your changes (`git commit -am 'Add new feature'`)
 4. Push to the branch (`git push origin feature/my-feature`)
 5. Open a Pull Request
-
----
-
-## License
-
-This project is licensed under the MIT License.
 
 ---
